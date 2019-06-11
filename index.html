@@ -1,71 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-  <head>
-        <title>Bootstrap 4 Example</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <body style="background-color:#00AEEF;">
+<head>
 
-        <div class="jumbotron text-center">
-                <h1>Bootcamp Pagina</h1>
-                <p>welkom.</p> 
-              </div>
-              
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <h3>Column 1</h3>
-                    <p>paragraph 1..</p>
-                  </div>
-                  <div class="col-sm-4">
-                    <h3>Column 2</h3>
-                    <p>paragraph 2..</p>
-                  </div>
-                  <div class="col-sm-4">
-                    <h3>Column 3</h3> 
-                    <p>paragraph 3..</p>
-                  </div>
-                </div>
-              </div>
+  <script>
 
-        <div class="container">
-            <h2>Bootcamp Agenda</h2>
-            <p>Een leuke agenda. Heel nuttig.</p>            
-            <table class="table table-bordered col-lg-9">
-                <thead class="text-uppercase">
-                <tr>
-                    <th>Datum</th>
-                    <th>Tijd</th>
-                    <th>Events</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>27 maart 2019</td>
-                    <td>12:00</td>
-                    <td>activiteiten</td>
-                </tr>
-                <tr>
-                    <td>28 maart 2019</td>
-                    <td>09:00</td>
-                    <td>activiteiten</td>
-                </tr>
-                <tr>
-                    <td>29 maart 2019</td>
-                    <td>09:00</td>
-                    <td>activiteiten</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
+    window.onload = function () {
+      haalGebruikerslijst();
+    };
 
-    </body>
+    function haalGebruikerslijst() {
+        var xhr = new XMLHttpRequest();
+        var gebruikerstabel = "";
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            console.log(this.responseText);
+            var gebruikerslijst = JSON.parse(this.responseText);
+            console.log(JSON.parse(this.responseText));
+            var getal;
+            gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>voornaam</th><th>achternaam</th></thead><tbody>";
+            for (getal = 0; getal < gebruikerslijst.length; getal += 1) {
+              gebruikerstabel += "<tr>"
+              console.log(gebruikerslijst[getal].voornaam);
+              gebruikerstabel += "<td>" + gebruikerslijst[getal].voornaam + "</td>";
+              gebruikerstabel += "<td>" + gebruikerslijst[getal].achternaam + "</td>";
+              gebruikerstabel += "</tr>";
+            }
+            gebruikerstabel += "</tbody></table>";
+            var elem = document.getElementById("gebruikerslijst");
+            elem.innerHTML = gebruikerstabel;
+          }
+        }
+        xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
+        xhr.send();
+      }
+
+  </script>
+
+  <title>Bootcamp welkom</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<body style="background-color:#00AEEF;">
+
+  <div class="jumbotron text-center">
+    <h1>Bootcamp Pagina</h1>
+    <p>welkom.</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h3>Gebruikerslijst</h3>
+        <p id=gebruikerslijst></p>
+      </div>
+      <div class="col-sm-4">
+        <h3>Column 2</h3>
+        <p>paragraph 2..</p>
+      </div>
+      <!-- <div class="col-sm-4">
+        <h3>Column 3</h3>
+        <p>paragraph 3..</p>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Bootcamp Agenda</h2>
+    <p>Een leuke agenda. Heel nuttig.</p>
+    <table class="table table-bordered col-lg-9">
+      <thead class="text-uppercase">
+        <tr>
+          <th>Datum</th>
+          <th>Tijd</th>
+          <th>Events</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>27 maart 2019</td>
+          <td>12:00</td>
+          <td>activiteiten</td>
+        </tr>
+        <tr>
+          <td>28 maart 2019</td>
+          <td>09:00</td>
+          <td>activiteiten</td>
+        </tr>
+        <tr>
+          <td>29 maart 2019</td>
+          <td>09:00</td>
+          <td>activiteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
 </html>
