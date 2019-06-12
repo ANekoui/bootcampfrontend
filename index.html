@@ -4,38 +4,10 @@
 <head>
 
   <script>
-    window.onload = function () {
-      haalGebruikerslijst();
-    };
 
     function inloggen() {
       alert("Joepie");
-    }
 
-    function haalGebruikerslijst() {
-      var xhr = new XMLHttpRequest();
-      var gebruikerstabel = "";
-      xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-          console.log(this.responseText);
-          var gebruikerslijst = JSON.parse(this.responseText);
-          console.log(JSON.parse(this.responseText));
-          var getal;
-          gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>voornaam</th><th>achternaam</th></thead><tbody>";
-          for (getal = 0; getal < gebruikerslijst.length; getal += 1) {
-            gebruikerstabel += "<tr>"
-            console.log(gebruikerslijst[getal].voornaam);
-            gebruikerstabel += "<td>" + gebruikerslijst[getal].voornaam + "</td>";
-            gebruikerstabel += "<td>" + gebruikerslijst[getal].achternaam + "</td>";
-            gebruikerstabel += "</tr>";
-          }
-          gebruikerstabel += "</tbody></table>";
-          var elem = document.getElementById("gebruikerslijst");
-          elem.innerHTML = gebruikerstabel;
-        }
-      }
-      xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
-      xhr.send();
     }
 
   </script>
@@ -44,13 +16,13 @@
     <a class="navbar-brand" href="#">Working Spirit Bootcamp</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Info</a>
+        <a class="nav-link" href="#info">Info</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Agenda</a>
+        <a class="nav-link" href="#agenda">Agenda</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="#contact">Contact</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="https://www.workingspirit.nl/" target="_blank">Working Spirit</a>
@@ -75,12 +47,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!-- "background-color:#00AEEF;" -->
-
 <body style="color:#808080;">
 
   <div class="jumbotron text-center" style="color:rgb(253, 253, 253); background-image:url('https://www.workingspirit.nl/assets/Uploads/HeaderAfbeeldingen/HH-60257639.jpg'); background-size: cover;">
-    <!-- <img class="img-fluid" src="HH-60257639.jpg" class="mx-auto d-block"> -->
 
     <h1><br><br>Working Spirit Bootcamp</h1>
     <img src="https://www.workingspirit.nl/themes/workingspirit/images/beeldmerk.svg" alt="Working Spirit beeldmerk">
@@ -88,13 +57,9 @@
 
   <div class="container">
     <div class="row">
-      <!-- <div class="col-sm-8">
-        <h3>Gebruikerslijst</h3>
-        <p id=gebruikerslijst></p>
-      </div> -->
       <div class="col-sm-12" style="color:#00AEEF;">
           <!-- <h3>Over Working Spirit Academy</h3> -->
-          <br><p class="font-weight-bolder">Wij zijn Working Spirit Academy, een onderdeel van Working Spirit ICT BV. De Academy
+          <br><p id="info" class="font-weight-bolder">Wij zijn Working Spirit Academy, een onderdeel van Working Spirit ICT BV. De Academy
               biedt een gericht opleidings- en ontwikkelprogramma binnen de ICT. Deze pagina bevat informatie
               over het Bootcamp onderdeel van het Academy traject en is gericht aan kandidaten die zich hebben
               aangemeld. Voor informatie over het gehele Academy traject en hoe jij je kan aanmelden, klik hier:
@@ -133,15 +98,11 @@
           De Bootcamp eindigt met een presentatie waarvoor de klant wordt uitgenodigd.
         </p>
       </div>
-      <!-- <div class="col-sm-4">
-        <h3>Column 3</h3>
-        <p>paragraph 3..</p>
-      </div> -->
     </div>
   </div>
 
   <div class="container">
-    <br><h3>Agenda</h3>
+    <br><h3 id="agenda">Agenda</h3>
     <!-- <p>Een leuke agenda. Heel nuttig.</p> -->
     <table class="table table-bordered col-lg-9">
       <thead>
@@ -168,9 +129,54 @@
           <td>Teamwork en presentaties</td>
         </tr>
       </tbody>
-    </table>
+    </table><br><br>
   </div>
 
 </body>
+
+<footer id="contact" class="page-footer font-small blue pt-4" style="background-color:#00AEEF; color:white;">
+
+    <div class="container-fluid text-center text-md-left">
+  
+      <div class="row">
+  
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <h3>Working Spirit Bootcamp</h5>
+          <img src="https://www.workingspirit.nl/themes/workingspirit/images/beeldmerk.svg" alt="Working Spirit beeldmerk">
+
+  
+        </div>
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <p>Keulenstraat 11<br>
+              7418 ET<br>
+              Deventer<br><br>
+              0570 51 38 38<br>
+              info@workingspirit.nl<br><br>
+              
+              Postbus 2075<br>
+              7420 AB Deventer<br><br>
+              
+              Privacy verklaring<br><br><br></p>
+  
+        </div>
+  
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <p>Daalwijkdreef 47<br>
+              1103 AD<br>
+              Amsterdam-Zuidoost<br></p>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  </footer>
 
 </html>
