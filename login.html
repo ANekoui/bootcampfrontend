@@ -38,33 +38,35 @@
 
   <div class="container-fluid text-center text-md-left">
 
-    <div>
-
-      <div class="col-md-6 mt-md-0 mt-3">
+     <div class="col-md-6 mt-md-0 mt-3">
 
         <h3>Working Spirit Bootcamp</h5>
           <img src="https://www.workingspirit.nl/themes/workingspirit/images/beeldmerk.svg"
             alt="Working Spirit beeldmerk">
 
-
       </div>
 
       <form action="action_page.php">
-
         <div class="center">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required><br>
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required><br>
-
-          <button type="submit" onclick="inloggen()">Login</button>
+          <table class="col-lg-5">
+            <tbody>
+              <tr>
+                <td><label for="uname"><b>Username</b></label></td>
+                <td><input type="text" placeholder="Enter Username" name="uname" required size="30"><br></td>
+              </tr>
+              <tr>
+                <td><label for="psw"><b>Password</b></label></td>
+                <td><input type="password" placeholder="Enter Password" name="psw" required size="30"><br></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><button class="btn btn-primary my-2 my-sm-0" type="submit" onclick="inloggen()">Login</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
       </form>
-
-    </div>
-
+    
   </div>
 
 </body>
