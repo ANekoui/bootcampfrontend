@@ -6,37 +6,37 @@
   <script>
 
     window.onload = function () {
-      haalGebruikerslijst();
+      haalLesstoflijst();
     };
 
-    function haalGebruikerslijst() {
+    function haalLesstoflijst() {
         var xhr = new XMLHttpRequest();
-        var gebruikerstabel = "";
+        var lesstoftabel = "";
         xhr.onreadystatechange = function () {
           if (this.readyState == 4) {
             console.log(this.responseText);
-            var gebruikerslijst = JSON.parse(this.responseText);
+            var lesstoflijst = JSON.parse(this.responseText);
             console.log(JSON.parse(this.responseText));
             var getal;
-            gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>voornaam</th><th>achternaam</th></thead><tbody>";
-            for (getal = 0; getal < gebruikerslijst.length; getal += 1) {
-              gebruikerstabel += "<tr>"
-              console.log(gebruikerslijst[getal].voornaam);
-              gebruikerstabel += "<td>" + gebruikerslijst[getal].voornaam + "</td>";
-              gebruikerstabel += "<td>" + gebruikerslijst[getal].achternaam + "</td>";
-              gebruikerstabel += "</tr>";
+            lesstoftabel += "<table class='table table-bordered col-lg-9'><thead><th>dag</th><th>titel</th><th>code</th></thead><tbody>";
+            for (getal = 0; getal < lesstoflijst.length; getal += 1) {
+              lesstoftabel += "<tr>"
+              console.log(lesstoflijst[getal].dag);
+              lesstoftabel += "<td>" + lesstoflijst[getal].dag + "</td>";
+              lesstoftabel += "<td>" + lesstoflijst[getal].titel + "</td>";
+              lesstoftabel += "<td>" + lesstoflijst[getal].code + "</td>";
+              lesstoftabel += "</tr>";
             }
-            gebruikerstabel += "</tbody></table>";
-            var elem = document.getElementById("gebruikerslijst");
-            elem.innerHTML = gebruikerstabel;
+            lesstoftabel += "</tbody></table>";
+            var elem = document.getElementById("lesstof");
+            elem.innerHTML = lesstoftabel;
           }
         }
-        xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
+        xhr.open("GET", "http://localhost:8082/getAlleLesstof", true);
         xhr.send();
       }
 
   </script>
-
   
   <title>Lesstof Bootcamp</title>
   <meta charset="utf-8">
@@ -53,40 +53,16 @@
 
 <body style="background-color:#00AEEF;">
 
-    <div class="jumbotron text-center">
+  <div class="jumbotron text-center">
     <h1>Lestof voor de komende Bootcamp</h1>
     <p>Welkom student</p>
   </div>
 
   <div class="container">
-    <h2>Lesstof</h2>
-    <p></p>
-    <table class="table table-bordered col-lg-9">
-      <thead class="text-uppercase">
-        <tr>
-          <th>Datum</th>
-          <th>Tijd</th>
-          <th>Lesstof</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>27 maart 2019</td>
-          <td>12:00</td>
-          <td>Lesstof</td>
-        </tr>
-        <tr>
-          <td>28 maart 2019</td>
-          <td>09:00</td>
-          <td>Lesstof</td>
-        </tr>
-        <tr>
-          <td>29 maart 2019</td>
-          <td>09:00</td>
-          <td>Lesstof</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col-sm-8">
+      <h2>Lesstof</h2>
+      <p id="lesstof"></p>
+    </div>
   </div>
 
 </body>
