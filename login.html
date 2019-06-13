@@ -6,7 +6,27 @@
   <script>
 
     function inloggen() {
-      window.location.href = "student.html"
+      
+      var gebruiker = {};
+      gebruiker.emailadres = document.getElementById("username").value;
+      gebruiker.wachtwoord = document.getElementById("password").value;
+      var JSONgebruiker = JSON.stringify(gebruiker);
+      alert(JSONgebruiker);
+      console.log(JSONgebruiker);
+      var xhr = new XMLHttpRequest;
+      xhr.onreadystatechange = function(){
+        if(this.readyState == 4){
+          alert(this.response);
+          console.log(this.response);
+          if(this.response == "true"){
+            window.location.href = "student.html";
+          }
+        }
+      }
+      xhr.open("GET", "http://localhost:8082/inlogGebruiker", true);
+      // xhr.setRequestHeader('Content-Type','application/json');
+      xhr.send(JSONgebruiker);
+
     }
 
   </script>
@@ -52,11 +72,11 @@
             <tbody>
               <tr>
                 <td><label for="uname"><b>Username</b></label></td>
-                <td><input type="text" placeholder="Enter Username" name="uname" required size="30"><br></td>
+                <td><input type="text" placeholder="Enter Username" name="uname" required size="30" id="username"><br></td>
               </tr>
               <tr>
                 <td><label for="psw"><b>Password</b></label></td>
-                <td><input type="password" placeholder="Enter Password" name="psw" required size="30"><br></td>
+                <td><input type="password" placeholder="Enter Password" name="psw" required size="30" id="password"><br></td>
               </tr>
               <tr>
                 <td></td>
