@@ -11,21 +11,19 @@
       gebruiker.emailadres = document.getElementById("username").value;
       gebruiker.wachtwoord = document.getElementById("password").value;
       var JSONgebruiker = JSON.stringify(gebruiker);
-      alert(JSONgebruiker);
       console.log(JSONgebruiker);
       var xhr = new XMLHttpRequest;
       xhr.onreadystatechange = function(){
         if(this.readyState == 4){
-          alert(this.response);
           console.log(this.response);
           if(this.response == "true"){
             window.location.href = "student.html";
           }
         }
       }
-      xhr.open("GET", "http://localhost:8082/inlogGebruiker", true);
+      xhr.open("GET", "http://localhost:8082/inlogGebruiker/"+gebruiker.emailadres+"/"+gebruiker.wachtwoord, true);
       // xhr.setRequestHeader('Content-Type','application/json');
-      xhr.send(JSONgebruiker);
+      xhr.send();
 
     }
 
@@ -66,26 +64,24 @@
 
       </div>
 
-      <form action="action_page.php">
-        <div class="center">
-          <table class="col-lg-5">
-            <tbody>
-              <tr>
-                <td><label for="uname"><b>Username</b></label></td>
-                <td><input type="text" placeholder="Enter Username" name="uname" required size="30" id="username"><br></td>
-              </tr>
-              <tr>
-                <td><label for="psw"><b>Password</b></label></td>
-                <td><input type="password" placeholder="Enter Password" name="psw" required size="30" id="password"><br></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td><button class="btn btn-primary my-2 my-sm-0" type="submit" onclick="inloggen()">Login</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </form>
+      <div class="center">
+        <table class="col-lg-5">
+          <tbody>
+            <tr>
+              <td><label for="uname"><b>Username</b></label></td>
+              <td><input type="text" placeholder="Enter Username" name="uname" required size="30" id="username"><br></td>
+            </tr>
+            <tr>
+              <td><label for="psw"><b>Password</b></label></td>
+              <td><input type="password" placeholder="Enter Password" name="psw" required size="30" id="password"><br></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button class="btn btn-primary my-2 my-sm-0" type="submit" onclick="inloggen()">Login</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     
   </div>
 
