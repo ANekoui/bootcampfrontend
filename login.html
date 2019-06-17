@@ -12,6 +12,7 @@
       gebruiker.wachtwoord = document.getElementById("password").value;
       var JSONgebruiker = JSON.stringify(gebruiker);
       console.log(JSONgebruiker);
+      
       var xhr = new XMLHttpRequest;
       xhr.onreadystatechange = function(){
         if(this.readyState == 4){
