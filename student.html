@@ -170,8 +170,8 @@
 
     #mainbody {
         background: #ffffff;
-        color: #808285;
-        font-size: 14px;
+        /* color: #808285; */
+        /* font-size: 14px; */
     }
 
     .sideimg {
@@ -316,6 +316,7 @@
 
           Als het niet lukt om een opgave te maken, doe dan 3 pogingen en lever deze in. Dan kunnen we zien waar je vast komt te zitten en je tips geven om verder te komen.
       </p>
+      <!-- TODO functionaliteit achter knoppen inbouwen -->
       <button type="button">Overzicht stof dag 1</button><br>
       <button type="button">Java code dag 1</button><br>
       <button type="button">Download het OCA boek 1z0-808</button><br>
@@ -325,6 +326,7 @@
       <p >
         Als afsluiting van dag 2 hebben we wederom een aantal opgaven bedacht. We vragen je vandaag opnieuw om ten minste 3 opgaven in te leveren. Meer mag altijd. Probeer de moeilijkste te maken die je aankunt. Ze zijn gerangschikt in oplopende moeilijkheidsgraad. Vind je de opgaven te lastig, kies dan uit opgaven van dag 1. Inleveren kan tot vrijdag ochtend 9:00 uur.
       </p>
+      <!-- TODO functionaliteit achter knoppen inbouwen -->
       <button type="button">Overzicht stof dag 2</button><br>
       <button type="button">Java code dag 2</button><br>
       <br>
@@ -333,7 +335,7 @@
   <div class="container" id="bottomrow">
     <div class="col-sm-8">
       <h2 style="color:#00aeef">Agenda</h2>
-      <p id="agenda"></p>
+      <!-- <p id="agenda"></p> -->
       <!-- <div class="row" id="bottomrow"> -->
         <div class="col-sm-16">
             <table id="table-bottom">
@@ -375,29 +377,71 @@
                     <td>Presentaties</td>
                 </tr>
                 <tr>
-                    <td>
-                    </td>
+                    <td></td>
                     <td>16.00-17.00 uur</td>
                     <td>Borrel</td>
                 </tr>
             </table>
         </div>
-        <div class="col-sm-3"></div>
+        <!-- <div class="col-sm-3"></div> -->
     </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="voorbereiding">
     <div class="col-sm-8">
       <h2 style="color:#00aeef">Voorbereiding</h2>
-      <p id="voorbereiding"></p>
+      <h3 style="color:dimgrey">Bestuderen Java</h3>
+      <p>Tijdens de informatiebijeenkomst ben je door ons verwezen naar deze tutorial:<a href="http://dagostino.nl/bootcamp/tutorial.html"> Working Spirit - Getting started</a>
+Wij adviseren om in ieder geval het gratis gedeelte van de codecademy.com tutorial voor JAVA af te ronden. Ook een deel van de inhoud van de andere tutorials zal aan bod komen gedurende de dagen. Iedere voorsprong die je hebt zal in je voordeel zijn.</p><br>
+      
+      <h3 style="color:dimgrey">Installeren van JDK en Notepad++</h3>
+      <p>Installeren van JDK en Notepad++
+            Instructies vind je hier: <a href="http://dagostino.nl/bootcamp/InstallationofJDK.html">Installeren van JDK en Notepad++</a>
+            JDK is de JAVA development omgeving.
+            Notepad++ is een handige editor die we gebruiken om code in te schrijven.
+            Als het je zelf niet lukt om deze software te installeren, dan ben je woensdag ochtend welkom bij de sessie waarbij we klassikaal de installatie gaan doornemen.</p><br>
+      <h3 style="color:dimgrey">Optioneel: Installeren van een IDE</h3>
+      <p>Bij programmeren wordt vaak een IDE (Integrated Development Environment) gebruikt omdat deze het programmeren makkelijker maakt. Voor de eenvoudige programma's die wij gaan maken zal een IDE nog niet heel veel toevoegen. Bovendien moet je er eerst mee leren werken voordat hij echt nuttig wordt. Daarom gebruiken we Notepad++.
+            Mocht je toch alvast zelf aan de slag willen met een IDE, dan kunnen we deze adviseren:</p>
+            <p><a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a></p>
+            <p><a href="https://www.eclipse.org/downloads/packages/">Eclipse</a></p>
     </div>
   </div>
-  <div class="container">
+  <!-- TODO Functionaliteit achter de knoppen inbouwen -->
+  <div class="container" id="opdrachten">
     <div class="col-sm-8">
       <h2 style="color:#00aeef">Opdrachten</h2>
-      <p id="opdrachten"></p>
-    </div>
+
+      <p>Gebruik het Code Upload form om je code in te leveren.
+         Als het niet lukt om een opdracht te maken, lever dan 3 pogingen in zodat we kunnen zien hoe je de opdracht aangepakt hebt en daar tips over kunnen geven.</p>
+         <h3 style="color:dimgrey">Dag 1</h3>
+         <button type="button" class="col-sm-12">Dag 1-1: Concateneer Strings</button>
+         <button type="button" class="col-sm-12">Dag 1-2: Print som en verschil</button>
+         <button type="button" class="col-sm-12">Dag 1-3: Hoger of lager dan 6</button>
+         <button type="button" class="col-sm-12">Dag 1-4: Letter count</button>
+         <button type="button" class="col-sm-12">Dag 1-5: Check wachtwoord</button>
+         <button type="button" class="col-sm-12">Dag 1-6: Check BMI</button>
+         <button type="button" class="col-sm-12">Dag 1-7: Reverse String</button>
+         <button type="button" class="col-sm-12">Dag 1-8: Print String verticaal</button>
+         <button type="button" class="col-sm-12">Dag 1-9: Faculteit</button>
+         <button type="button" class="col-sm-12">Dag 1-10: Voer het alfabet in</button>
+         <br>
+        <br>
+        <h3 style="color:dimgrey">Dag 2</h3>
+        <button type="button" class="col-sm-12">Dag 2-1: Array sum</button>
+        <button type="button" class="col-sm-12">Dag 2-2: Letter count van "e"</button>
+        <button type="button" class="col-sm-12">Dag 2-3: Print het hele kaartspel uit</button>
+        <button type="button" class="col-sm-12">Dag 2-4: Ik ga op vakantie en neem mee</button>
+        <button type="button" class="col-sm-12">Dag 2-5: Kaartspel schudden</button>
+        <button type="button" class="col-sm-12">Dag 2-6: Kalender uitprinten van willekeurig in te geven jaar</button>
+        <button type="button" class="col-sm-12">Dag 2-7: Zeeslag</button>
+        <button type="button" class="col-sm-12">Dag 2-8: Galgje</button>
+        <button type="button" class="col-sm-12">Dag 2-9: Eigen code die je graag wil laten zien</button>
+        <br>
+        <br>
+        </div>
   </div>
+  <!-- TODO code upload mogelijkheid maken -->
   <div class="container">
     <div class="col-sm-8">
       <h2 style="color:#00aeef">Code Upload</h2>
