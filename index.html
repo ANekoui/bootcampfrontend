@@ -20,13 +20,15 @@
             gebruiker.wachtwoord = document.getElementById("password").value;
             var JSONgebruiker = JSON.stringify(gebruiker);
             console.log(JSONgebruiker);
+            
+
 
             var xhr = new XMLHttpRequest;
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4) {
                     console.log(this.response);
-
-                    if (this.response == "true") {
+                    var rol = JSON.parse(this.responseText);
+                    if (rol == "STUDENT") {
                         window.location.href = 'student.html';
                     } else {
                         document.getElementById("foutmelding").innerHTML = "Het e-mailadres of wachtwoord is onjuist."
