@@ -30,6 +30,15 @@
                     var rol = JSON.parse(this.responseText);
                     if (rol == "STUDENT") {
                         window.location.href = 'student.html';
+                    }
+                    if (rol == "ADMIN") {
+                        window.location.href = 'admin.html';
+                    } 
+                    if (rol == "MEDEWERKER") {
+                        window.location.href = 'medewerker.html';
+                    } 
+                    if (rol == "DOCENT") {
+                        window.location.href = 'docent.html';
                     } else {
                         document.getElementById("foutmelding").innerHTML = "Het e-mailadres of wachtwoord is onjuist."
                     }
