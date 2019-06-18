@@ -13,6 +13,36 @@
 
     <title>Admin</title>
     <script>
+        function haalGebruikersOp(){
+            var xhr = new XMLHttpRequest();
+            var gebruikerstabel= "";
+            xhr.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            console.log(this.responseText);
+            var gebruikersLijst = JSON.parse(this.responseText);
+            console.log(JSON.parse(this.responseText));
+            var getal;
+            gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>dag</th><th>titel</th><th>code</th></thead><tbody>";
+            for (getal = 0; getal < gebruikersLijst.length; getal += 1) {
+              gebruikerstabel += "<tr>"
+              console.log(gebruikersLijst[getal].dag);
+              gebruikerstabel += "<td>" + gebruikersLijst[getal].id + "</td>";
+              gebruikerstabel += "<td>" + gebruikersLijst[getal].voornaam + "</td>";
+              gebruikerstabel += "<td>" + gebruikersLijst[getal].achternaam + "</td>";
+              gebruikerstabel += "<td>" + gebruikersLijst[getal].rol + "</td>";
+              gebruikerstabel += "<td>" + gebruikersLijst[getal].emailadres + "</td>";
+              gebruikerstabel += "<td>" + gebruikersLijst[getal].wachtwoord + "</td>";
+              gebruikerstabel += "</tr>";
+            }
+            gebruikerstabel += "</tbody></table>";
+            var elem = document.getElementById("allegebruikers");
+            elem.innerHTML = gebruikerstabel;
+          }
+        }
+        xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
+        xhr.send();
+      
+        }
     </script>
 
     <style>
@@ -282,10 +312,13 @@
                     <!-- Gebruikers  -->
                     <!-- TODO functionaliteit inbouwen voor de knoppen -->
                     <div class="btn-group">
-                            <button>Toon alle gebruikers</button>
+                            <button onclick="haalGebruikersOp()">Toon alle gebruikers</button>
                             <button>Voeg een gebrukker toe</button>
                             <button>Wijzig een gebruiker</button>
                             <button>Verwijder een gebruiker</button> 
+                    </div>
+                    <div class="container" id="allegebruikers">
+                                 
                     </div>
                     <br>
 
@@ -301,10 +334,10 @@
                     <br>
                     <br>
                 </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <img src="https://media.licdn.com/dms/image/C4E22AQEt6qMdU4y3JA/feedshare-shrink_8192/0?e=1563408000&v=beta&t=XnGy0yXPlZW9oi99qib1UvQbqybOqlwHjHueQnz5yb8"
                         class="sideimg">
-                </div>
+                </div> -->
                 <div class="col"></div>
             </div>
     
