@@ -13,36 +13,67 @@
 
     <title>Admin</title>
     <script>
+     
+
+
+
         function haalGebruikersOp(){
             var xhr = new XMLHttpRequest();
             var gebruikerstabel= "";
             xhr.onreadystatechange = function () {
-          if (this.readyState == 4) {
-            console.log(this.responseText);
-            var gebruikersLijst = JSON.parse(this.responseText);
-            console.log(JSON.parse(this.responseText));
-            var getal;
-            gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rol</th><th>Emailadres</th><th>Wachtwoord</th></thead><tbody>";
-            for (getal = 0; getal < gebruikersLijst.length; getal += 1) {
-              gebruikerstabel += "<tr>"
-              console.log(gebruikersLijst[getal].dag);
-              gebruikerstabel += "<td>" + gebruikersLijst[getal].id + "</td>";
-              gebruikerstabel += "<td>" + gebruikersLijst[getal].voornaam + "</td>";
-              gebruikerstabel += "<td>" + gebruikersLijst[getal].achternaam + "</td>";
-              gebruikerstabel += "<td>" + gebruikersLijst[getal].rol + "</td>";
-              gebruikerstabel += "<td>" + gebruikersLijst[getal].emailadres + "</td>";
-              gebruikerstabel += "<td>" + gebruikersLijst[getal].wachtwoord + "</td>";
-              gebruikerstabel += "</tr>";
+                  if (this.readyState == 4) {
+                    console.log(this.responseText);
+                    var gebruikersLijst = JSON.parse(this.responseText);
+                    console.log(JSON.parse(this.responseText));
+                    var getal;
+                    gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rol</th><th>Emailadres</th><th>Wachtwoord</th></thead><tbody>";
+                    for (getal = 0; getal < gebruikersLijst.length; getal += 1) {
+                        gebruikerstabel += "<tr>"
+                        console.log(gebruikersLijst[getal].dag);
+                        gebruikerstabel += "<td>" + gebruikersLijst[getal].id + "</td>";
+                        gebruikerstabel += "<td>" + gebruikersLijst[getal].voornaam + "</td>";
+                        gebruikerstabel += "<td>" + gebruikersLijst[getal].achternaam + "</td>";
+                        gebruikerstabel += "<td>" + gebruikersLijst[getal].rol + "</td>";
+                        gebruikerstabel += "<td>" + gebruikersLijst[getal].emailadres + "</td>";
+                        gebruikerstabel += "<td>" + gebruikersLijst[getal].wachtwoord + "</td>";
+                        gebruikerstabel += "</tr>";
+                        }
+                gebruikerstabel += "</tbody></table>";
+                var elem = document.getElementById("allegebruikers");
+                elem.innerHTML = gebruikerstabel;
+                }
             }
-            gebruikerstabel += "</tbody></table>";
-            var elem = document.getElementById("allegebruikers");
-            elem.innerHTML = gebruikerstabel;
-          }
+            xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
+            xhr.send();
         }
-        xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
-        xhr.send();
-      
-        }
+        // function voegGebruikerToe(){
+        //     var gebruikerstabel="";
+        //     var getal;
+        //     gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rol</th><th>Emailadres</th><th>Wachtwoord</th></thead><tbody>";
+        //     for (getal = 0; getal < 2 ; getal +=1){
+        //         gebruikerstabel += "<tr>"
+        //         gebruikerstabel += "<td>" +  "</td>";
+        //         gebruikerstabel += "<td>" +  "</td>";
+        //         gebruikerstabel += "<td>" +  "</td>";
+        //         gebruikerstabel += "<td>" +  "</td>";
+        //         gebruikerstabel += "<td>" +  "</td>";
+        //         gebruikerstabel += "<td>" +  "</td>";
+        //         gebruikerstabel += "</tr>";
+        //         }
+        //         gebruikerstabel += "</tbody></table>";
+        //         var elem = document.getElementById("voeggebruikertoe");
+        //         elem.innerHTML = gebruikerstabel;
+
+        //     var xhr = new XMLHttpRequest();
+        //     var nieuweGebruiker;
+        //     xhr.onreadystatechange = function () {
+        //          if (this.readyState == 4) {
+        //          console.log(this.responseText);
+        // }
+        //     }
+        // }
+
+
     </script>
 
     <style>
@@ -313,12 +344,13 @@
                     <!-- TODO functionaliteit inbouwen voor de knoppen -->
                     <div class="btn-group">
                             <button onclick="haalGebruikersOp()">Toon alle gebruikers</button>
-                            <button>Voeg een gebrukker toe</button>
+                            <button onclick="voegGebruikerToe()">Voeg een gebruiker toe</button>
                             <button>Wijzig een gebruiker</button>
                             <button>Verwijder een gebruiker</button> 
                     </div>
-                    <div class="container" id="allegebruikers">
-                                 
+                    <div class="container" id="allegebruikers"></div>
+                    <div class="container" id="voeggebruikertoe">
+                        <button onclick="verstuurGebruiker()">Verstuur gebruiker</button>
                     </div>
                     <br>
 
