@@ -31,10 +31,10 @@
                     }
                     if (rol == "ADMIN") {
                         window.location.href = 'admin.html';
-                    } 
+                    }
                     if (rol == "MEDEWERKER") {
                         window.location.href = 'medewerker.html';
-                    } 
+                    }
                     if (rol == "DOCENT") {
                         window.location.href = 'docent.html';
                     } else {
@@ -42,7 +42,7 @@
                     }
                 }
             }
-            xhr.open("GET", "http://localhost:8082/inlogGebruiker/"+gebruiker.emailadres+"/"+gebruiker.wachtwoord, true);
+            xhr.open("GET", "http://localhost:8082/inlogGebruiker/" + gebruiker.emailadres + "/" + gebruiker.wachtwoord, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send();
         }
@@ -153,7 +153,7 @@
             border-color: transparent;
             border-bottom-color: #ffffff;
         }
-        
+
         #agenda tbody tr:hover td {
             opacity: 1.0;
             background-color: #ffffff;
@@ -220,8 +220,10 @@
             text-transform: uppercase;
             color: #00aeef;
         }
-        
-        #table-bottom, th, td {
+
+        #table-bottom,
+        th,
+        td {
             border-bottom: 1px solid;
             border-bottom-color: #00aeef;
             text-align: left;
@@ -249,7 +251,6 @@
         #contactinfo a {
             color: #ffffff;
         }
-
     </style>
 </head>
 
@@ -274,7 +275,8 @@
                     <a class="nav-link" href="#contactinfo">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary" data-toggle="modal" data-target="#loginModal" id="navbutton">Login</a>
+                    <a class="nav-link btn btn-primary" data-toggle="modal" data-target="#loginModal"
+                        id="navbutton">Login</a>
                 </li>
             </ul>
         </div>
@@ -283,34 +285,35 @@
     <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title" id="loginModalTitle ">Login</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-5">
-                        E-mailadres
-                        <input type="text" id="email">
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            E-mailadres
+                            <input type="text" id="email">
+                        </div>
+                        <div class="col-sm-5">
+                            Wachtwoord
+                            <input type="password" maxlength="25" id="password" onkeypress="loginEnter()">
+                            <!-- minlength="8" -->
+                        </div>
                     </div>
-                    <div class="col-sm-5">
-                        Wachtwoord
-                        <input type="password" maxlength="25" id="password" onkeypress="loginEnter()"> <!-- minlength="8" -->
+                    <div class="row">
+                        <div class="col">
+                            <p id="foutmelding"></p>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <p id="foutmelding"></p>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary modalButton" onclick="login()">Login</button>
+                    <button type="button" class="btn btn-secondary modalButton" data-dismiss="modal">Sluiten</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary modalButton" onclick="login()">Login</button>
-                <button type="button" class="btn btn-secondary modalButton" data-dismiss="modal">Sluiten</button>
-            </div>
             </div>
         </div>
     </div>
@@ -343,14 +346,14 @@
                     <table class="table" id="agenda">
                         <thead>
                             <tr>
-                                <th width="20%" >Datum</th>
+                                <th width="20%">Datum</th>
                                 <th>Tijd</th>
                                 <th>Info</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                    
+
                                 <td href="#bottomrow">27 maart 2019</td>
                                 <td href="#bottomrow">11:00 - 17:00</td>
                                 <td href="#bottomrow">Start Bootcamp</td>
@@ -375,133 +378,137 @@
     <!-- MAIN BODY -->
     <div id="mainbody">
         <div class="container-fluid">
-        <!-- MAIN BODY HEAD -->
-        <div class="row">
-            <div class="col-sm-9" id="introtext">
-                <!-- Over Working Spirit Academy -->
-                <p id="info" class="font-weight-bolder">Wij zijn Working Spirit Academy, een onderdeel van Working Spirit ICT BV. De Academy
-                    biedt een gericht opleidings- en ontwikkelprogramma binnen de ICT. Deze pagina bevat informatie
-                    over het Bootcamp onderdeel van het Academy traject en is gericht aan kandidaten die zich hebben
-                    aangemeld. Voor informatie over het gehele Academy traject en hoe jij je kan aanmelden, klik hier:
-                    <a href="https://www.workingspirit.nl/academy/">https://www.workingspirit.nl/academy/</a>.
-                </p><br>
-                <br>
-               <!-- Over de Bootcamp -->
-                <h2>De Bootcamp</h2><br>
-                <p style="color:#808080;">De bootcamp is het laatste selectiemiddel in de procedure en tevens ook het belangrijkste.<br>
-                    Het doel van deze bootcamp is tweeledig:<br><br>
-                    • Ten eerste worden tijdens de bootcamp de basisbeginselen van de aan te leren
-                    ontwikkeltaal of andere ICT-disciplines aangeleerd. Na afloop van de bootcamp wordt er
-                    inzichtelijk gemaakt op welke gebieden er bijgespijkerd moet worden voordat er met het
-                    opleidingsprogramma gestart wordt.<br>
-                    • Ten tweede wordt hier het kaf van het koren gescheiden: een CV kan er prima uitzien, maar
-                    in de bootcamp mag dat in de praktijk getoond worden.<br><br>
-                    Tijdens de bootcamp gaan de kandidaten 3 dagen interactief aan de slag, zowel zelfstandig als in
-                    groepsverband. De eerste 2 dagen wordt de theorie behandeld en huiswerk gemaakt. Op de 3 de dag
-                    worden groepen gevormd en gewerkt aan een opdracht. De samenstelling van deze groepen is
-                    zodanig dat er van ieder niveau een persoon in de groep zit. Hierdoor vindt er meer kennisdeling
-                    plaats en is er spraken van meer interactie.<br><br>
-                    Op dag 3 gaan de kandidaten aan de slag op 2 laptops met 3 personen, waarbij er ieder uur gewisseld
-                    wordt van rol. De bootcamp eindigt met een presentatie, gegeven door de groep, over de opdracht.
-                    Hiervoor wordt ook de klant uitgenodigd.<br>
-                </p>
-                <br>
-            </div>
-            <div class="col-sm-3">
-                <img src="https://media.licdn.com/dms/image/C4E22AQEt6qMdU4y3JA/feedshare-shrink_8192/0?e=1563408000&v=beta&t=XnGy0yXPlZW9oi99qib1UvQbqybOqlwHjHueQnz5yb8"
-                    class="sideimg">
-            </div>
-            <div class="col"></div>
-        </div>
-
-        <!-- MAIN BODY INTROS -->
-        <div>
-           <!-- Agenda -->
-            <div class="row" id="bottomrow">
-                <div class="col-sm-4 introtitel" style="color:#00AEEF;">
-                    Agenda
+            <!-- MAIN BODY HEAD -->
+            <div class="row">
+                <div class="col-sm-9" id="introtext">
+                    <!-- Over Working Spirit Academy -->
+                    <p id="info" class="font-weight-bolder">Wij zijn Working Spirit Academy, een onderdeel van Working
+                        Spirit ICT BV. De Academy
+                        biedt een gericht opleidings- en ontwikkelprogramma binnen de ICT. Deze pagina bevat informatie
+                        over het Bootcamp onderdeel van het Academy traject en is gericht aan kandidaten die zich hebben
+                        aangemeld. Voor informatie over het gehele Academy traject en hoe jij je kan aanmelden, klik
+                        hier:
+                        <a href="https://www.workingspirit.nl/academy/">https://www.workingspirit.nl/academy/</a>.
+                    </p><br>
+                    <br>
+                    <!-- Over de Bootcamp -->
+                    <h2>De Bootcamp</h2><br>
+                    <p style="color:#808080;">De bootcamp is het laatste selectiemiddel in de procedure en tevens ook
+                        het belangrijkste.<br>
+                        Het doel van deze bootcamp is tweeledig:<br><br>
+                        • Ten eerste worden tijdens de bootcamp de basisbeginselen van de aan te leren
+                        ontwikkeltaal of andere ICT-disciplines aangeleerd. Na afloop van de bootcamp wordt er
+                        inzichtelijk gemaakt op welke gebieden er bijgespijkerd moet worden voordat er met het
+                        opleidingsprogramma gestart wordt.<br>
+                        • Ten tweede wordt hier het kaf van het koren gescheiden: een CV kan er prima uitzien, maar
+                        in de bootcamp mag dat in de praktijk getoond worden.<br><br>
+                        Tijdens de bootcamp gaan de kandidaten 3 dagen interactief aan de slag, zowel zelfstandig als in
+                        groepsverband. De eerste 2 dagen wordt de theorie behandeld en huiswerk gemaakt. Op de 3 de dag
+                        worden groepen gevormd en gewerkt aan een opdracht. De samenstelling van deze groepen is
+                        zodanig dat er van ieder niveau een persoon in de groep zit. Hierdoor vindt er meer kennisdeling
+                        plaats en is er spraken van meer interactie.<br><br>
+                        Op dag 3 gaan de kandidaten aan de slag op 2 laptops met 3 personen, waarbij er ieder uur
+                        gewisseld
+                        wordt van rol. De bootcamp eindigt met een presentatie, gegeven door de groep, over de opdracht.
+                        Hiervoor wordt ook de klant uitgenodigd.<br>
+                    </p>
+                    <br>
                 </div>
-                <table class="table table-bordered col-lg-9">
-                    <thead>
-                      <tr>
-                        <th>Datum</th>
-                        <th>Tijdstip</th>
-                        <th>Info</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>27 maart 2019</td>
-                        <td>11:00 - 17:00</td>
-                        <td>Start Bootcamp</td>
-                      </tr>
-                      <tr>
-                        <td>28 maart 2019</td>
-                        <td>09:30 - 17:00</td>
-                        <td>Java beginselen</td>
-                      </tr>
-                      <tr>
-                        <td>29 maart 2019</td>
-                        <td>09:30 - 17:00</td>
-                        <td>Teamwork en presentaties</td>
-                      </tr>
-                    </tbody>
-                  </table><br><br>
-
-                <div class="col-sm-5">
-                    
+                <div class="col-sm-3">
+                    <img src="https://media.licdn.com/dms/image/C4E22AQEt6qMdU4y3JA/feedshare-shrink_8192/0?e=1563408000&v=beta&t=XnGy0yXPlZW9oi99qib1UvQbqybOqlwHjHueQnz5yb8"
+                        class="sideimg">
                 </div>
-                <div class="col-sm-3"></div>
+                <div class="col"></div>
             </div>
-        </div>
+
+            <!-- MAIN BODY INTROS -->
+            <div>
+                <!-- Agenda -->
+                <div class="row" id="bottomrow">
+                    <div class="col-sm-4 introtitel" style="color:#00AEEF;">
+                        Agenda
+                    </div>
+                    <table class="table table-bordered col-lg-9">
+                        <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Tijdstip</th>
+                                <th>Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>27 maart 2019</td>
+                                <td>11:00 - 17:00</td>
+                                <td>Start Bootcamp</td>
+                            </tr>
+                            <tr>
+                                <td>28 maart 2019</td>
+                                <td>09:30 - 17:00</td>
+                                <td>Java beginselen</td>
+                            </tr>
+                            <tr>
+                                <td>29 maart 2019</td>
+                                <td>09:30 - 17:00</td>
+                                <td>Teamwork en presentaties</td>
+                            </tr>
+                        </tbody>
+                    </table><br><br>
+
+                    <div class="col-sm-5">
+
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="row" id="footer">
         <div class="container-fluid">
-        <div class="row">
-        <div class="col-sm-4">
-            <a href="https://workingspirit.nl/">
-                <img src="https://www.workingspirit.nl/themes/workingspirit/images/beeldmerk.svg"
-                    alt="Working Spirit beeldmerk">
-            </a>
-        </div>
-        <div class="col-sm-5">
-            <h1 class="textlogo">
-                Working <br>
-                Spirit
-            </h1>
-            <br>
-            <div class="row" id="contactinfo">
-                <p>
-                    <div class="col-sm-4">
-                        Keulenstraat 11 <br>
-                        7418 ET <br>
-                        Deventer <br>
-                        0570 51 38 38 <br>
-                        info@workingspirit.nl <br>
-                        <br>
-                        Postbus 2075 <br>
-                        7420 AB Deventer <br>
-                        <br>
-                        <a href="https://www.workingspirit.nl/privacy-verklaring">
-                            Privacy verklaring
-                        </a> <br>
-                        <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="https://workingspirit.nl/">
+                        <img src="https://www.workingspirit.nl/themes/workingspirit/images/beeldmerk.svg"
+                            alt="Working Spirit beeldmerk">
+                    </a>
+                </div>
+                <div class="col-sm-5">
+                    <h1 class="textlogo">
+                        Working <br>
+                        Spirit
+                    </h1>
+                    <br>
+                    <div class="row" id="contactinfo">
+                        <p>
+                            <div class="col-sm-4">
+                                Keulenstraat 11 <br>
+                                7418 ET <br>
+                                Deventer <br>
+                                0570 51 38 38 <br>
+                                info@workingspirit.nl <br>
+                                <br>
+                                Postbus 2075 <br>
+                                7420 AB Deventer <br>
+                                <br>
+                                <a href="https://www.workingspirit.nl/privacy-verklaring">
+                                    Privacy verklaring
+                                </a> <br>
+                                <br>
+                            </div>
+                            <div class="col">
+                                Daalwijkdreef 47 <br>
+                                1103 AD <br>
+                                Amsterdam-Zuidoost <br>
+                            </div>
+                        </p>
                     </div>
-                    <div class="col">
-                        Daalwijkdreef 47 <br>
-                        1103 AD <br>
-                        Amsterdam-Zuidoost <br>
-                    </div>
-                </p>
+                </div>
+                <div class="col-sm-3">
+                    <!-- Twitter? -->
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Twitter? -->
-        </div>
-        </div>
         </div>
     </div>
 

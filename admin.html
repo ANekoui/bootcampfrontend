@@ -13,7 +13,7 @@
 
     <title>Admin</title>
     <script>
-     
+        var server = "http://localhost:8082";
 
 
 
@@ -46,33 +46,30 @@
             xhr.open("GET", "http://localhost:8082/getAlleGebruikers", true);
             xhr.send();
         }
-        // function voegGebruikerToe(){
-        //     var gebruikerstabel="";
-        //     var getal;
-        //     gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rol</th><th>Emailadres</th><th>Wachtwoord</th></thead><tbody>";
-        //     for (getal = 0; getal < 2 ; getal +=1){
-        //         gebruikerstabel += "<tr>"
-        //         gebruikerstabel += "<td>" +  "</td>";
-        //         gebruikerstabel += "<td>" +  "</td>";
-        //         gebruikerstabel += "<td>" +  "</td>";
-        //         gebruikerstabel += "<td>" +  "</td>";
-        //         gebruikerstabel += "<td>" +  "</td>";
-        //         gebruikerstabel += "<td>" +  "</td>";
-        //         gebruikerstabel += "</tr>";
-        //         }
-        //         gebruikerstabel += "</tbody></table>";
-        //         var elem = document.getElementById("voeggebruikertoe");
-        //         elem.innerHTML = gebruikerstabel;
-
-        //     var xhr = new XMLHttpRequest();
-        //     var nieuweGebruiker;
-        //     xhr.onreadystatechange = function () {
-        //          if (this.readyState == 4) {
-        //          console.log(this.responseText);
-        // }
-        //     }
-        // }
-
+   
+        function voegGebruikerToe() {
+            var xhr = new XMLHttpRequest();
+            var gebruiker = {};
+            gebruiker.voornaam = document.getElementById("ngvoornaam").value;
+            console.log(gebruiker.voornaam);
+            gebruiker.achternaam = document.getElementById("ngachternaam").value;
+            console.log(gebruiker.achternaam);
+            gebruiker.emailadres = document.getElementById("ngemailadres").value;
+            console.log(gebruiker.emailadres);
+            gebruiker.wachtwoord = document.getElementById("ngwachtwoord").value;
+            console.log(gebruiker.wachtwoord);
+            gebruiker.rol = document.getElementById("ngrol").value;
+            var JSONgebruiker = JSON.stringify(gebruiker);
+            console.log(JSONgebruiker);
+            xhr.onreadystatechange = function() {
+                if(this.readyState == 4) {
+                    console.log(this.responseText);
+                }
+            }
+            xhr.open("POST", server + "/postGebruiker", true);
+            xhr.setRequestHeader("Content-Type","application/json");
+            xhr.send(JSONgebruiker);
+        }
 
     </script>
 
@@ -342,16 +339,17 @@
                         <h2 style="color:#00aeef">Gebruikers</h2>
                     <!-- Gebruikers  -->
                     <!-- TODO functionaliteit inbouwen voor de knoppen -->
-                    <div class="btn-group">
-                            <button onclick="haalGebruikersOp()">Toon alle gebruikers</button>
-                            <button onclick="voegGebruikerToe()">Voeg een gebruiker toe</button>
-                            <button>Wijzig een gebruiker</button>
-                            <button>Verwijder een gebruiker</button> 
-                    </div>
+                    <button onclick="voegGebruikerToe()">Voeg een gebruiker toe</button><br>
+                    <input type=text  id="ngvoornaam" value="voornaam" ><br>
+                    <input type=text  id="ngachternaam" value="achternaam" ><br>
+                    <input type=text  id="ngemailadres" value="emailadres" ><br>
+                    <input type=text  id="ngwachtwoord" value="wachtwoord" ><br>
+                    <input type=text  id="ngrol" value="rol" ><br>
+
+                    <button onclick="haalGebruikersOp()">Toon alle gebruikers</button>
+
                     <div class="container" id="allegebruikers"></div>
-                    <div class="container" id="voeggebruikertoe">
-                        <button onclick="verstuurGebruiker()">Verstuur gebruiker</button>
-                    </div>
+                 
                     <br>
 
                     <br>
