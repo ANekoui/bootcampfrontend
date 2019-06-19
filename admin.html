@@ -22,7 +22,7 @@
             var gebruikersLijst = JSON.parse(this.responseText);
             console.log(JSON.parse(this.responseText));
             var getal;
-            gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>dag</th><th>titel</th><th>code</th></thead><tbody>";
+            gebruikerstabel += "<table class='table table-bordered col-lg-9'><thead><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rol</th><th>Emailadres</th><th>Wachtwoord</th></thead><tbody>";
             for (getal = 0; getal < gebruikersLijst.length; getal += 1) {
               gebruikerstabel += "<tr>"
               console.log(gebruikersLijst[getal].dag);
