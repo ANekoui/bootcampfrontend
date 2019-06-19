@@ -332,6 +332,7 @@
       <br>
     </div>
   </div>
+  <!-- Agenda -->
   <div class="container" id="bottomrow">
     <div class="col-sm-8">
       <h2 style="color:#00aeef">Agenda</h2>
@@ -387,6 +388,7 @@
     </div>
     </div>
   </div>
+  <!-- Voorbereiding -->
   <div class="container" id="voorbereiding">
     <div class="col-sm-8">
       <h2 style="color:#00aeef">Voorbereiding</h2>
@@ -407,6 +409,7 @@ Wij adviseren om in ieder geval het gratis gedeelte van de codecademy.com tutori
             <p><a href="https://www.eclipse.org/downloads/packages/">Eclipse</a></p>
     </div>
   </div>
+  <!-- DAG 2 -->
   <!-- TODO Functionaliteit achter de knoppen inbouwen -->
   <div class="container" id="opdrachten">
     <div class="col-sm-8">
@@ -441,13 +444,25 @@ Wij adviseren om in ieder geval het gratis gedeelte van de codecademy.com tutori
         <br>
         </div>
   </div>
+  <!-- Code upload -->
   <!-- TODO code upload mogelijkheid maken -->
-  <div class="container">
+<div class="container">
     <div class="col-sm-8">
-      <h2 style="color:#00aeef">Code Upload</h2>
-      <p id="code_upload"></p>
+        <h2 style="color:#00aeef">Code Upload</h2>
+        <form action="/action_page.php">
+            <div class="form-group">
+                <input type="opdracht" class="form-control" id="opdracht" placeholder="Voer opdrachtnummer in"
+                    name="opdrachtnummer" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="10" id="code" placeholder="Voer code in" name="code"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitbutton">Verzenden</button>
+        </form>
+        <p id="code_upload"></p>
     </div>
-  </div>
+</div>
  
     <!-- FOOTER -->
     <div class="row" id="footer">
